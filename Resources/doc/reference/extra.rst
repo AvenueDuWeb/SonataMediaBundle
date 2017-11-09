@@ -73,14 +73,12 @@ have a set named default_small.
         filter_sets:
             default_small:
                 quality: 75
-                controller_action: 'SonataMediaBundle:Media:liipImagineFilter'
                 filters:
                     thumbnail: { size: [100, 70], mode: outbound }
 
 
             default_big:
                 quality: 75
-                controller_action: 'SonataMediaBundle:Media:liipImagineFilter'
                 filters:
                     thumbnail: { size: [500, 70], mode: outbound }
 
