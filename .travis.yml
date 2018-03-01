@@ -10,14 +10,22 @@ branches:
 language: php
 
 php:
+  - '5.6'
+  - '7.0'
   - '7.1'
+  - '7.2'
   - nightly
 
 services:
   - mongodb
 
 sudo: false
-dist: precise
+dist: trusty
+
+addons:
+  apt:
+    packages:
+      - libxml2-utils
 
 cache:
   pip: true
@@ -30,49 +38,45 @@ env:
     - SYMFONY_DEPRECATIONS_HELPER=weak
     - TARGET=test
     - UPSTREAM_URL=https://github.com/sonata-project/SonataMediaBundle.git
-    - XMLLINT_INDENT="    "
 
 matrix:
   fast_finish: true
   include:
-    - php: '7.1'
+    - php: '7.2'
       env: TARGET=docs
-    - php: '7.1'
+    - php: '7.2'
       env: TARGET=lint
-    - php: '7.1'
+    - php: '5.6'
       env: COMPOSER_FLAGS="--prefer-lowest"
-    - php: '7.1'
+    - php: '7.2'
       env: SYMFONY=2.8.*
-    - php: '7.1'
-      env: SYMFONY=3.2.*
-    - php: '7.1'
+    - php: '7.2'
       env: SYMFONY=3.3.*
-    - php: '7.1'
-      env: SYMFONY=dev-master@dev
-    - php: '7.1'
+    - php: '7.2'
+      env: SYMFONY=3.4.*
+    - php: '7.2'
+      env: SYMFONY='dev-master as 3.4.x-dev'
+    - php: '7.2'
       env: DOCTRINE_ODM=1.*
-    - php: '7.1'
-      env: DOCTRINE_ODM=dev-master@dev
-    - php: '7.1'
+    - php: '7.2'
+      env: DOCTRINE_ODM='dev-master as 1.x-dev'
+    - php: '7.2'
       env: SONATA_CORE=3.*
-    - php: '7.1'
-      env: SONATA_CORE=dev-master@dev
-    - php: '7.1'
+    - php: '7.2'
+      env: SONATA_CORE='dev-master as 3.x-dev'
+    - php: '7.2'
       env: SONATA_ADMIN=3.*
-    - php: '7.1'
-      env: SONATA_ADMIN=dev-master@dev
-    - php: '7.1'
+    - php: '7.2'
+      env: SONATA_ADMIN='dev-master as 3.x-dev'
+    - php: '7.2'
       env: SYMFONY_DEPRECATIONS_HELPER=0
-    - php: hhvm
-      dist: trusty
   allow_failures:
     - php: nightly
-    - php: hhvm
     - env: SYMFONY_DEPRECATIONS_HELPER=0
-    - env: SYMFONY=dev-master@dev
-    - env: DOCTRINE_ODM=dev-master@dev
-    - env: SONATA_CORE=dev-master@dev
-    - env: SONATA_ADMIN=dev-master@dev
+    - env: SYMFONY='dev-master as 3.4.x-dev'
+    - env: DOCTRINE_ODM='dev-master as 1.x-dev'
+    - env: SONATA_CORE='dev-master as 3.x-dev'
+    - env: SONATA_ADMIN='dev-master as 3.x-dev'
 
 before_install:
   - git remote add upstream ${UPSTREAM_URL} && git fetch --all

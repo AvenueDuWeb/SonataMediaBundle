@@ -1,6 +1,9 @@
 UPGRADE 3.x
 ===========
 
+UPGRADE FROM 3.6 to 3.7
+=======================
+
 ### Doctrine schema update for GalleryHasMedia
 Doctrine ORM join columns from GalleryHasMedia entity towards both Gallery and Media entities has been changed. Now
 they include the `onDelete="CASCADE"` option: this allows to delete a media if included in a gallery (and vice-versa).
@@ -13,6 +16,11 @@ UPGRADE FROM 3.4 to 3.5
 
 Sonata\MediaBundle\DependencyInjection\Compiler\AddProviderCompilerPass::fixSettings($container)
 is deprecated. Please avoid using this method, use ``getExtensionConfig($container)`` instead.
+
+Sonata\MediaBundle\Controller\Controller\MediaController::liipImagineFilterAction($path, $filter)
+is deprecated. Please avoid using this method.
+If you define controller_action in liip_imagine configs please remove it.
+
 
 UPGRADE FROM 3.2 to 3.3
 =======================

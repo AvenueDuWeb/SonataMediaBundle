@@ -2,6 +2,64 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.11.0](https://github.com/sonata-project/SonataMediaBundle/compare/3.10.2...3.11.0) - 2018-02-23
+### Added
+- added block title translation domain option
+- added block icon option
+- added block class option
+- Added compatibility with Gaufrette `^0.4` and `^0.5`
+- Added compatibility with Buzz `^0.16`
+
+### Fixed
+- Commands not working on symfony4
+- `AmazonMetadataBuilder` now relies on Psr7 mimeType guesser
+
+### Removed
+- Removed default title from blocks
+- Removed old `sonata-` classes from templates
+- Removed compatibility with Gaufrette `^0.1`and `^0.2`
+- Removed compatibility with JMS serializer `^0.13`
+
+## [3.10.2](https://github.com/sonata-project/SonataMediaBundle/compare/3.10.1...3.10.2) - 2018-02-02
+### Added
+- Added support for latest imagine version
+
+### Changed
+- Make services public
+
+## [3.10.1](https://github.com/sonata-project/SonataMediaBundle/compare/3.10.0...3.10.1) - 2018-01-26
+### Added
+- Added missing SquareResizer::$metadata property
+- Added Catalan translations
+
+### Fixed
+- Selected gallery context is now translated just like in the dropdown.
+- Replaced `getMockBuilder` with `createMock` where it was possible
+- Fixed phpdoc
+
+## [3.10.0](https://github.com/sonata-project/SonataMediaBundle/compare/3.9.0...3.10.0) - 2017-11-30
+### Added
+- Added automatically adding src format to srcset
+
+### Fixed
+- Return size after resize in cropping flow, not just the cropped dimensions
+- FOSRest-related deprecations
+- It is now allowed to install Symfony 4
+
+## [3.9.0](https://github.com/sonata-project/SonataMediaBundle/compare/3.8.0...3.9.0) - 2017-11-23
+### Added
+- Added option to set the img `srcset` tag by giving it an array of format names.
+
+### Changed
+- Rollback to PHP 5.6 as minimum support.
+
+### Fixed
+- fixed bug against twig 2.0 as `translationBundle` cannot be null
+- Silent `sonata:media:remove-thumbnails` command when running this command without arguments.
+- Sf3 compatibility on the sync-thumbnails command (dialog helper)
+- Sf3 compatibility on the refresh-metadata and update-cdn-status commands (dialog helper)
+- Use FormRenderer runtime to maintain compatibility with Symfony 3.4
+
 ## [3.8.0](https://github.com/sonata-project/SonataMediaBundle/compare/3.7.0...3.8.0) - 2017-10-22
 ### Removed
 - Support for old versions of php and Symfony.
